@@ -130,7 +130,7 @@ nav.scrolled{box-shadow:var(--shadow-sm)}
 /* DEMO */
 #demo{padding:7rem 0;background:var(--navy);position:relative;overflow:hidden}
 #demo::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(184,134,11,.08) 0%,transparent 70%);pointer-events:none}
-.demo-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.demo-inner{display:grid;grid-template-columns:1fr;gap:2rem;position:relative;z-index:2}
 .demo-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:3px;padding:.3rem .8rem;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4AE066;margin-bottom:1.5rem}
 .demo-features{list-style:none;margin-bottom:2rem}
 .demo-features li{display:flex;align-items:center;gap:.6rem;font-size:.86rem;color:rgba(255,255,255,.7);padding:.4rem 0}
@@ -460,11 +460,11 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
         <a href="#contacto" class="product-action-link">Solicitar informaci&#243;n &#8594;</a>
       </div>
       <div class="product-card fade-up d3">
-        <span class="card-badge badge-active">Disponible</span>
+        <span class="card-badge badge-available">Demo disponible</span>
         <div class="product-icon">&#129367;</div>
         <h3>Quorbit Nutrici&#243;n</h3>
         <p>Plataforma para consultorios y centros de nutrici&#243;n: planes alimenticios, seguimiento de pacientes y reportes de progreso.</p>
-        <a href="#contacto" class="product-action-link">Solicitar informaci&#243;n &#8594;</a>
+        <a href="https://quorbitintelligence.github.io/Nutricion/" target="_blank" class="product-action-link">Abrir demo gratuito &#8594;</a>
       </div>
       <div class="product-card fade-up d1">
         <span class="card-badge badge-active">Disponible</span>
@@ -494,33 +494,59 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
 <section id="demo">
   <div class="container">
     <div class="demo-inner">
-      <div class="fade-up">
+      <!-- DEMO TABS -->
+      <div class="fade-up" style="grid-column:1/-1">
         <div class="demo-badge">&#10003; 100% Gratuito</div>
-        <h2 style="color:#fff">Prueba Quorbit Finanzas ahora mismo</h2>
-        <p style="color:rgba(255,255,255,.6);margin:1rem 0 1.5rem;font-size:.95rem;line-height:1.75">Sin registros, sin tarjeta de cr&#233;dito. Accede a la versi&#243;n gratuita de Quorbit Finanzas y descubre c&#243;mo transformar el control financiero de tu empresa, negocio o finanzas personales desde el primer d&#237;a.</p>
-        <ul class="demo-features">
-          <li>Registro de ingresos y egresos</li>
-          <li>Reportes financieros autom&#225;ticos</li>
-          <li>Flujo de caja en tiempo real</li>
-          <li>Exportaci&#243;n de datos</li>
-          <li>Versi&#243;n gratuita sin l&#237;mite de tiempo</li>
-        </ul>
-        <div class="demo-cta-row">
-          <a href="https://quorbitintelligence.github.io/Finanzas/" target="_blank" class="btn btn-primary">Abrir Quorbit Finanzas &#8250;</a>
-          <button class="btn" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2)" onclick="openModal('register')">Solicitar demo personalizado</button>
+        <h2 style="color:#fff;margin-bottom:1rem">Prueba nuestros demos ahora mismo</h2>
+        <p style="color:rgba(255,255,255,.6);margin-bottom:1.5rem;font-size:.95rem;line-height:1.75">Sin registros, sin tarjeta de cr&#233;dito. Accede a los demos gratuitos y descubre c&#243;mo Quorbit puede transformar tu empresa, negocio o finanzas personales desde el primer d&#237;a.</p>
+        <!-- Tab buttons -->
+        <div style="display:flex;gap:.8rem;margin-bottom:2rem;flex-wrap:wrap">
+          <button id="tabFinanzas" onclick="switchDemo('finanzas')" class="btn btn-primary" style="font-size:.82rem;padding:.55rem 1.2rem">&#128176; Quorbit Finanzas</button>
+          <button id="tabNutricion" onclick="switchDemo('nutricion')" class="btn" style="font-size:.82rem;padding:.55rem 1.2rem;background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.25)">&#129367; Quorbit Nutrici&#243;n</button>
+          <button class="btn" style="font-size:.82rem;padding:.55rem 1.2rem;background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);border:1.5px solid rgba(255,255,255,.1);cursor:default" title="Pr&#243;ximamente">&#129302; M&#225;s demos pronto...</button>
         </div>
-      </div>
-      <div class="fade-up d2">
-        <div class="demo-frame-wrap">
-          <div class="demo-frame-top">
-            <div class="demo-frame-dots">
-              <span style="background:#FF5F56"></span>
-              <span style="background:#FFBD2E"></span>
-              <span style="background:#27C93F"></span>
+        <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start">
+          <!-- LEFT: info panel -->
+          <div id="demoInfoFinanzas">
+            <ul class="demo-features">
+              <li>Registro de ingresos y egresos</li>
+              <li>Reportes financieros autom&#225;ticos</li>
+              <li>Flujo de caja en tiempo real</li>
+              <li>Exportaci&#243;n de datos</li>
+              <li>Versi&#243;n gratuita sin l&#237;mite de tiempo</li>
+            </ul>
+            <div class="demo-cta-row" style="margin-top:1.5rem">
+              <a href="https://quorbitintelligence.github.io/Finanzas/" target="_blank" class="btn btn-primary">Abrir Quorbit Finanzas &#8250;</a>
+              <button class="btn" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2)" onclick="openModal('register')">Solicitar demo personalizado</button>
             </div>
-            <div class="demo-frame-url">quorbitintelligence.github.io/Finanzas/</div>
           </div>
-          <iframe class="demo-iframe" src="https://quorbitintelligence.github.io/Finanzas/" title="Quorbit Finanzas" loading="lazy"></iframe>
+          <div id="demoInfoNutricion" style="display:none">
+            <ul class="demo-features">
+              <li>Planes alimenticios personalizados</li>
+              <li>Seguimiento de pacientes</li>
+              <li>Reportes de progreso autom&#225;ticos</li>
+              <li>Historial nutricional completo</li>
+              <li>Versi&#243;n gratuita sin l&#237;mite de tiempo</li>
+            </ul>
+            <div class="demo-cta-row" style="margin-top:1.5rem">
+              <a href="https://quorbitintelligence.github.io/Nutricion/" target="_blank" class="btn btn-primary">Abrir Quorbit Nutrici&#243;n &#8250;</a>
+              <button class="btn" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2)" onclick="openModal('register')">Solicitar demo personalizado</button>
+            </div>
+          </div>
+          <!-- RIGHT: iframe -->
+          <div>
+            <div class="demo-frame-wrap">
+              <div class="demo-frame-top">
+                <div class="demo-frame-dots">
+                  <span style="background:#FF5F56"></span>
+                  <span style="background:#FFBD2E"></span>
+                  <span style="background:#27C93F"></span>
+                </div>
+                <div class="demo-frame-url" id="demoFrameUrl">quorbitintelligence.github.io/Finanzas/</div>
+              </div>
+              <iframe class="demo-iframe" id="demoIframe" src="https://quorbitintelligence.github.io/Finanzas/" title="Quorbit Finanzas" loading="lazy"></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -889,6 +915,25 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
   </div>
 </div>
 <script>
+// Demo tab switcher
+function switchDemo(tab) {
+  var isFinanzas = tab === 'finanzas';
+  document.getElementById('demoInfoFinanzas').style.display = isFinanzas ? 'block' : 'none';
+  document.getElementById('demoInfoNutricion').style.display = isFinanzas ? 'none' : 'block';
+  document.getElementById('demoIframe').src = isFinanzas
+    ? 'https://quorbitintelligence.github.io/Finanzas/'
+    : 'https://quorbitintelligence.github.io/Nutricion/';
+  document.getElementById('demoFrameUrl').textContent = isFinanzas
+    ? 'quorbitintelligence.github.io/Finanzas/'
+    : 'quorbitintelligence.github.io/Nutricion/';
+  var btnF = document.getElementById('tabFinanzas');
+  var btnN = document.getElementById('tabNutricion');
+  btnF.className = isFinanzas ? 'btn btn-primary' : 'btn';
+  btnF.style.cssText = isFinanzas ? 'font-size:.82rem;padding:.55rem 1.2rem' : 'font-size:.82rem;padding:.55rem 1.2rem;background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.25)';
+  btnN.className = isFinanzas ? 'btn' : 'btn btn-primary';
+  btnN.style.cssText = isFinanzas ? 'font-size:.82rem;padding:.55rem 1.2rem;background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.25)' : 'font-size:.82rem;padding:.55rem 1.2rem';
+}
+
 // Navbar scroll
 var navbar = document.getElementById('navbar');
 window.addEventListener('scroll', function() {
