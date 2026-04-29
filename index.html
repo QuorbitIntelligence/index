@@ -42,6 +42,30 @@ section{position:relative;z-index:1}
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 0;background:rgba(250,247,242,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(184,134,11,.15);transition:all .3s}
 nav.scrolled{box-shadow:var(--shadow-sm)}
+
+/* NAV DROPDOWN */
+.nav-dropdown{position:relative}
+.nav-drop-trigger{cursor:pointer;display:flex;align-items:center;gap:.3rem}
+.nav-drop-menu{
+  display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  padding-top:12px;
+  background:transparent;
+  min-width:290px;z-index:300;
+}
+.nav-drop-menu-inner{
+  background:#fff;border:1px solid var(--card-border);border-radius:12px;
+  box-shadow:0 20px 50px rgba(28,43,58,.18);overflow:hidden;
+}
+/* hover handled by JS */
+@keyframes dropIn{from{opacity:0;transform:translateX(-50%) translateY(-4px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.ndm-header{font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);padding:.8rem 1rem .5rem;border-bottom:1px solid var(--cream-mid)}
+.ndm-item{display:flex;align-items:center;gap:.9rem;padding:.85rem 1rem;text-decoration:none;transition:background .2s;border-bottom:1px solid var(--cream-mid)}
+.ndm-item:hover{background:var(--cream)}
+.ndm-icon{width:36px;height:36px;border-radius:8px;background:var(--gold-bg);border:1px solid rgba(184,134,11,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ndm-title{font-size:.82rem;font-weight:700;color:var(--navy);font-family:'Syne',sans-serif}
+.ndm-sub{font-size:.68rem;color:var(--text-light);margin-top:.1rem}
+.ndm-footer{display:block;text-align:center;padding:.7rem;font-size:.75rem;font-weight:700;color:var(--gold);text-decoration:none;background:var(--cream);transition:background .2s}
+.ndm-footer:hover{background:var(--cream-mid)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 2rem}
 .logo{display:flex;align-items:center;text-decoration:none}
 .logo img{height:34px;width:auto}
@@ -323,10 +347,34 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* RESPONSIVE */
+/* CLIENTS SECTION */
+#clientes{padding:7rem 0;background:var(--navy);position:relative;overflow:hidden}
+#clientes::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(184,134,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,134,11,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.client-card{background:rgba(255,255,255,.04);border:1px solid rgba(184,134,11,.2);border-radius:14px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column}
+.client-card:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(0,0,0,.4);border-color:rgba(184,134,11,.45)}
+.client-preview{height:170px;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(184,134,11,.15)}
+.client-preview-inner{width:90%;height:85%;border-radius:6px;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.2);display:flex;flex-direction:column;overflow:hidden}
+.client-preview-bar{height:18px;background:var(--navy);display:flex;align-items:center;padding:0 .5rem;gap:.3rem;flex-shrink:0}
+.client-preview-dot{width:6px;height:6px;border-radius:50%}
+.client-preview-url{flex:1;height:7px;background:rgba(255,255,255,.1);border-radius:3px;margin:0 .4rem}
+.client-preview-body{flex:1;background:var(--cream);padding:.4rem}
+.client-preview-line{height:6px;border-radius:3px;margin:.4rem .2rem;background:var(--cream-mid)}
+.client-tag{position:absolute;top:.7rem;right:.7rem;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);border-radius:3px;padding:.18rem .5rem;font-size:.6rem;font-weight:800;color:#4AE066;letter-spacing:.08em;text-transform:uppercase}
+.client-info{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.client-sector{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.client-name{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+.client-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:1.2rem;flex:1}
+.client-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:700;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,134,11,.3);padding-bottom:1px;transition:gap .2s,border-color .2s;width:fit-content}
+.client-link:hover{gap:.7rem;border-color:var(--gold)}
+.clients-note{text-align:center;margin:3rem auto 0;max-width:600px;padding:1.5rem 2rem;background:rgba(255,255,255,.04);border:1px solid rgba(184,134,11,.15);border-radius:10px}
+.clients-note p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.7}
+.clients-note strong{color:var(--gold-pale)}
+
 @media(max-width:960px){
   .hero-inner,.why-grid,.creator-inner,.contact-grid,.demo-inner{grid-template-columns:1fr}
   .hero-visual,.demo-frame-wrap{display:none}
-  .pricing-grid{grid-template-columns:1fr}
+  .pricing-grid,.clients-grid{grid-template-columns:1fr}
   .steps-grid{grid-template-columns:1fr 1fr}
   .steps-grid::before{display:none}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -349,6 +397,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
   <a href="#demo" onclick="closeMobileNav()">Prueba gratis</a>
   <a href="#porque" onclick="closeMobileNav()">Por qu&#233; Quorbitt</a>
   <a href="#precios" onclick="closeMobileNav()">Precios</a>
+  <a href="#clientes" onclick="closeMobileNav()">Clientes</a>
   <a href="#creador" onclick="closeMobileNav()">Creador</a>
   <a href="#contacto" onclick="closeMobileNav()">Contacto</a>
   <button class="btn btn-primary" onclick="openModal('register');closeMobileNav()">Solicitar demo</button>
@@ -362,6 +411,31 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
       <li><a href="#demo">Prueba gratis</a></li>
       <li><a href="#porque">&#191;Por qu&#233; Quorbitt?</a></li>
       <li><a href="#precios">Precios</a></li>
+      <li class="nav-dropdown">
+        <a href="#clientes" class="nav-drop-trigger">Clientes &#9662;</a>
+        <div class="nav-drop-menu">
+          <div class="nav-drop-menu-inner">
+            <div class="ndm-header">Portafolio de clientes</div>
+            <a href="https://quorbitintelligence.github.io/deck/limbica/" target="_blank" class="ndm-item">
+              <div class="ndm-icon">&#129504;</div>
+              <div><div class="ndm-title">L&#237;mbica M&#233;rida</div><div class="ndm-sub">Plataforma web empresarial</div></div>
+            </a>
+            <a href="https://quorbitintelligence.github.io/deck/noor/" target="_blank" class="ndm-item">
+              <div class="ndm-icon">&#127973;</div>
+              <div><div class="ndm-title">Hospital Noor Clinic</div><div class="ndm-sub">Sitio institucional hospitalario</div></div>
+            </a>
+            <a href="https://quorbitintelligence.github.io/deck/noor/medicos/" target="_blank" class="ndm-item">
+              <div class="ndm-icon">&#129657;</div>
+              <div><div class="ndm-title">Portal M&#233;dicos Noor Clinic</div><div class="ndm-sub">Portal de registro de m&#233;dicos</div></div>
+            </a>
+            <a href="https://quorbitintelligence.github.io/deck/lexcountmx/" target="_blank" class="ndm-item">
+              <div class="ndm-icon">&#9878;&#65039;</div>
+              <div><div class="ndm-title">LexCount MX</div><div class="ndm-sub">Plataforma web empresarial</div></div>
+            </a>
+            <a href="#clientes" class="ndm-footer">Ver todos los clientes &#8250;</a>
+          </div>
+        </div>
+      </li>
       <li><a href="#creador">Creador</a></li>
     </ul>
     <div class="nav-right">
@@ -758,6 +832,145 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
 </section>
 
 <div class="divider"></div>
+<div class="divider" style="opacity:.08"></div>
+
+<section id="clientes">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-eyebrow" style="color:var(--gold-pale)">Portafolio</span>
+      <h2 style="color:#fff">Clientes que conf&#237;an en Quorbitt</h2>
+      <p style="color:rgba(255,255,255,.55)">Cada proyecto es una muestra de nuestro compromiso con la calidad, el dise&#241;o y la funcionalidad. Estas son algunas de las soluciones que hemos entregado.</p>
+      <div class="gold-line" style="background:var(--gold-pale)"></div>
+    </div>
+    <div class="clients-grid">
+
+      <div class="client-card fade-up d1">
+        <div class="client-preview">
+          <div class="client-preview-inner">
+            <div class="client-preview-bar">
+              <div class="client-preview-dot" style="background:#FF5F56"></div>
+              <div class="client-preview-dot" style="background:#FFBD2E"></div>
+              <div class="client-preview-dot" style="background:#27C93F"></div>
+              <div class="client-preview-url"></div>
+            </div>
+            <div class="client-preview-body">
+              <div style="height:26px;background:linear-gradient(135deg,#6B21A8,#A855F7);margin:.3rem .2rem;border-radius:3px"></div>
+              <div class="client-preview-line" style="width:70%"></div>
+              <div class="client-preview-line" style="width:50%"></div>
+              <div style="display:flex;gap:.3rem;margin:.3rem .2rem">
+                <div style="flex:1;height:24px;background:var(--cream-mid);border-radius:3px"></div>
+                <div style="flex:1;height:24px;background:var(--cream-mid);border-radius:3px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="client-tag">Live</div>
+        </div>
+        <div class="client-info">
+          <div class="client-sector">Bienestar &amp; Salud Mental</div>
+          <div class="client-name">L&#237;mbica M&#233;rida</div>
+          <p class="client-desc">Plataforma web empresarial para centro de bienestar y salud mental en M&#233;rida, Yucat&#225;n. Dise&#241;o enfocado en transmitir confianza, calidez y profesionalismo.</p>
+          <a href="https://quorbitintelligence.github.io/deck/limbica/" target="_blank" class="client-link">Ver proyecto &#8594;</a>
+        </div>
+      </div>
+
+      <div class="client-card fade-up d2">
+        <div class="client-preview">
+          <div class="client-preview-inner">
+            <div class="client-preview-bar">
+              <div class="client-preview-dot" style="background:#FF5F56"></div>
+              <div class="client-preview-dot" style="background:#FFBD2E"></div>
+              <div class="client-preview-dot" style="background:#27C93F"></div>
+              <div class="client-preview-url"></div>
+            </div>
+            <div class="client-preview-body">
+              <div style="height:26px;background:linear-gradient(135deg,#1B4F72,#2E86C1);margin:.3rem .2rem;border-radius:3px"></div>
+              <div class="client-preview-line" style="width:65%"></div>
+              <div class="client-preview-line" style="width:45%"></div>
+              <div style="display:flex;gap:.3rem;margin:.3rem .2rem">
+                <div style="flex:2;height:24px;background:var(--cream-mid);border-radius:3px"></div>
+                <div style="flex:1;height:24px;background:#2E86C1;border-radius:3px;opacity:.3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="client-tag">Live</div>
+        </div>
+        <div class="client-info">
+          <div class="client-sector">Salud &amp; Hospitales</div>
+          <div class="client-name">Hospital Noor Clinic</div>
+          <p class="client-desc">Sitio institucional para Hospital Noor Clinic en Huixquilucan, Estado de M&#233;xico. Enfoque en marketing hospitalario y captaci&#243;n de pacientes.</p>
+          <a href="https://quorbitintelligence.github.io/deck/noor/" target="_blank" class="client-link">Ver proyecto &#8594;</a>
+        </div>
+      </div>
+
+      <div class="client-card fade-up d3">
+        <div class="client-preview">
+          <div class="client-preview-inner">
+            <div class="client-preview-bar">
+              <div class="client-preview-dot" style="background:#FF5F56"></div>
+              <div class="client-preview-dot" style="background:#FFBD2E"></div>
+              <div class="client-preview-dot" style="background:#27C93F"></div>
+              <div class="client-preview-url"></div>
+            </div>
+            <div class="client-preview-body">
+              <div style="height:26px;background:linear-gradient(135deg,#1B4F72,#AED6F1);margin:.3rem .2rem;border-radius:3px"></div>
+              <div style="display:flex;gap:.25rem;flex-wrap:wrap;margin:.3rem .2rem">
+                <div style="width:22px;height:22px;border-radius:50%;background:#2E86C1;opacity:.4"></div>
+                <div style="width:22px;height:22px;border-radius:50%;background:#2E86C1;opacity:.4"></div>
+                <div style="width:22px;height:22px;border-radius:50%;background:#2E86C1;opacity:.4"></div>
+              </div>
+              <div class="client-preview-line" style="width:80%"></div>
+              <div class="client-preview-line" style="width:55%"></div>
+            </div>
+          </div>
+          <div class="client-tag">Live</div>
+        </div>
+        <div class="client-info">
+          <div class="client-sector">Salud &amp; Plataformas</div>
+          <div class="client-name">Portal M&#233;dicos Noor Clinic</div>
+          <p class="client-desc">Portal de registro y gesti&#243;n para m&#233;dicos adscritos al Hospital Noor Clinic. Plataforma interna con acceso seguro y administraci&#243;n de afiliaciones.</p>
+          <a href="https://quorbitintelligence.github.io/deck/noor/medicos/" target="_blank" class="client-link">Ver proyecto &#8594;</a>
+        </div>
+      </div>
+
+    </div>
+      <div class="client-card fade-up d1">
+        <div class="client-preview">
+          <div class="client-preview-inner">
+            <div class="client-preview-bar">
+              <div class="client-preview-dot" style="background:#FF5F56"></div>
+              <div class="client-preview-dot" style="background:#FFBD2E"></div>
+              <div class="client-preview-dot" style="background:#27C93F"></div>
+              <div class="client-preview-url"></div>
+            </div>
+            <div class="client-preview-body">
+              <div style="height:26px;background:linear-gradient(135deg,#1a1a2e,#16213e);margin:.3rem .2rem;border-radius:3px"></div>
+              <div class="client-preview-line" style="width:75%"></div>
+              <div class="client-preview-line" style="width:55%"></div>
+              <div style="display:flex;gap:.3rem;margin:.3rem .2rem">
+                <div style="flex:1;height:24px;background:var(--cream-mid);border-radius:3px"></div>
+                <div style="flex:1;height:24px;background:var(--cream-mid);border-radius:3px"></div>
+                <div style="flex:1;height:24px;background:var(--cream-mid);border-radius:3px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="client-tag">Live</div>
+        </div>
+        <div class="client-info">
+          <div class="client-sector">Legal &amp; Contabilidad</div>
+          <div class="client-name">LexCount MX</div>
+          <p class="client-desc">Plataforma web empresarial para despacho de servicios legales y contables en M&#233;xico. Dise&#241;o profesional orientado a generar confianza y captar nuevos clientes.</p>
+          <a href="https://quorbitintelligence.github.io/deck/lexcountmx/" target="_blank" class="client-link">Ver proyecto &#8594;</a>
+        </div>
+      </div>
+
+    <div class="clients-note fade-up">
+      <p>&#127881; Cada proyecto fue desarrollado con <strong>dise&#241;o personalizado, tecnolog&#237;a moderna y entrega en tiempo r&#233;cord</strong>. &#191;Quieres que tu empresa sea el siguiente caso de &#233;xito? <a href="#contacto" style="color:var(--gold);text-decoration:none;font-weight:700">Cont&#225;ctanos &#8250;</a></p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="creador">
   <div class="container">
     <div class="creator-inner">
@@ -878,6 +1091,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
       <div class="footer-col">
         <h4>Empresa</h4>
         <ul>
+          <li><a href="#clientes">Clientes</a></li>
           <li><a href="#creador">Sobre el creador</a></li>
           <li><a href="#porque">&#191;Por qu&#233; Quorbitt?</a></li>
           <li><a href="#precios">Precios</a></li>
@@ -987,6 +1201,20 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(184,134,11,.12);padd
   </div>
 </div>
 <script>
+// Dropdown menu — JS-based for reliable hover bridge
+(function() {
+  var dd = document.querySelector('.nav-dropdown');
+  if (!dd) return;
+  var menu = dd.querySelector('.nav-drop-menu');
+  var timer;
+  function showMenu() { clearTimeout(timer); menu.style.display = 'block'; }
+  function hideMenu() { timer = setTimeout(function() { menu.style.display = 'none'; }, 120); }
+  dd.addEventListener('mouseenter', showMenu);
+  dd.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+})();
+
 // Navbar scroll
 var navbar = document.getElementById('navbar');
 window.addEventListener('scroll', function() {
